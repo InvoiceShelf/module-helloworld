@@ -34,7 +34,7 @@ var f = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, p = { class: "p-6 sm:p-8" }
 						S[3] ||= r("p", { class: "mt-5 max-w-2xl text-sm leading-6 text-muted" }, " This page, its sidebar link, and the settings form are supplied by an independently versioned InvoiceShelf module. The host loads only the module's compiled local asset. ", -1),
 						S[4] ||= r("div", { class: "mt-5 inline-flex rounded-lg bg-green-50 px-3 py-2 text-sm font-medium text-green-700" }, " Marketplace update path verified ", -1),
 						r("div", g, [
-							r("span", _, " Version " + l(u("1.0.1")), 1),
+							r("span", _, " Version " + l(u("1.1.0")), 1),
 							S[1] ||= r("span", { class: "rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body" }, " Module API 1 ", -1),
 							S[2] ||= r("span", { class: "rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body" }, " Signed package ", -1)
 						])
