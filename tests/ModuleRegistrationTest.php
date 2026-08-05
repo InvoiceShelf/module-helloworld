@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\HelloWorld\Tests;
 
 use InvoiceShelf\Modules\Registry;
+use Modules\HelloWorld\Lifecycle\DataCleanup;
 use Modules\HelloWorld\Support\ModuleRegistration;
 
 final class ModuleRegistrationTest extends TestCase
@@ -33,5 +34,15 @@ final class ModuleRegistrationTest extends TestCase
             array_column($settings->fields(), 'key'),
         );
         self::assertSame('Hello, world!', $settings->fields()[0]['default']);
+    }
+
+    public function test_its_data_cleanup_is_safe_to_repeat(): void
+    {
+        $cleanup = new DataCleanup;
+
+        $cleanup->cleanup();
+        $cleanup->cleanup();
+
+        self::addToAssertionCount(1);
     }
 }
