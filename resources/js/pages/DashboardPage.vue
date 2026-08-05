@@ -25,6 +25,12 @@
             versioned InvoiceShelf module. The host loads only the module's compiled local asset.
           </p>
 
+          <div
+            class="mt-5 inline-flex rounded-lg bg-green-50 px-3 py-2 text-sm font-medium text-green-700"
+          >
+            Marketplace update path verified
+          </div>
+
           <div class="mt-6 flex flex-wrap gap-3">
             <span class="rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body">
               Version {{ moduleVersion }}
@@ -63,5 +69,6 @@ const checks = [
   'The module route is registered before the app mounts.',
   'The sidebar contribution comes from the module registry.',
   'Settings are rendered and stored by the host per company.',
+  'Version 1.0.1 was delivered as a signed, immutable update.',
 ]
 </script>

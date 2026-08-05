@@ -15,7 +15,7 @@
     "requires": {},
     "schema_version": 1,
     "slug": "hello-world",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "AGPL-3.0-only",
     "compatibility": {
         "invoiceshelf": "^3.0.0",
