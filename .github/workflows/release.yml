@@ -1,0 +1,17 @@
+name: Release module
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    uses: InvoiceShelf/modules/.github/workflows/module-release.yml@3.1.0
+    with:
+      channel: stable
+    secrets: inherit
+
