@@ -1,14 +1,21 @@
 # InvoiceShelf Hello World module
 
-The official reference module for the InvoiceShelf v3 marketplace. It is deliberately small, but exercises the complete first-party module contract:
+A deliberately small, official lifecycle sample for the InvoiceShelf v3 marketplace. It is a reference for the **Module API 1.1** contract—not a template for the newer 1.2 AI-driver and typed frontend-extension APIs.
 
-- a signed, versioned marketplace package;
-- a Vue page registered in the host application;
-- a sidebar entry;
-- schema-driven, per-company settings; and
-- install, enable, disable, update, and data-aware uninstall lifecycle support.
+It demonstrates a module page, sidebar entry, per-company settings, committed frontend assets, signed marketplace packaging, enable/disable behavior, and data-aware uninstall. The source and compiled asset are licensed `AGPL-3.0-only`.
 
-The module is free and open source. Its source and compiled frontend asset are licensed under AGPL-3.0-only.
+## Exact compatibility
+
+The checked-in `module.json` declares:
+
+| Dependency | Constraint |
+| --- | --- |
+| InvoiceShelf | `^3.0.0` |
+| Module API | `^1.1.0` |
+| PHP | `^8.3.0` |
+| Required extension | `ext-json` |
+
+`^3.0.0` begins with the final 3.0.0 release, so this sample does not declare compatibility with InvoiceShelf prereleases such as `3.0.0-alpha.*`. Do not copy that constraint for a module intended for the current v3 preview; use an explicit prerelease range after testing it instead.
 
 ## Development
 
@@ -23,16 +30,14 @@ pnpm run build
 vendor/bin/invoiceshelf-module validate-package .
 ```
 
-`dist/init.js` is committed because InvoiceShelf installs immutable packages without running Composer or Node package managers. Rebuild it whenever the Vue source changes.
+`dist/init.js` is committed because InvoiceShelf installs immutable module packages without running Composer or Node package managers. Rebuild and commit it whenever the Vue source changes.
 
-## Uninstall cleanup
+## Lifecycle and data removal
 
-When an administrator explicitly selects **Remove module data**, InvoiceShelf first invokes the module's `DataCleanup` implementation while its tables are still available. That hook handles resources outside module migrations, such as shared-table rows, generated files, or external integrations. InvoiceShelf then runs every migration's `down()` method and removes its host-managed settings. Cleanup implementations must be safe to retry after a partial failure.
+Disabling the module removes its active UI and routes while keeping its configuration. Uninstalling removes the package. When an administrator explicitly selects **Remove module data**, InvoiceShelf calls the module's `DataCleanup` hook first, runs every module migration's `down()` method, then removes host-managed settings.
 
-Hello World does not create persistent module data, so its cleanup implementation is intentionally empty and serves as the reference no-op implementation.
+Hello World does not create persistent module data, so its cleanup implementation is intentionally empty. It is still a useful reference: cleanup must be safe to retry and should remove module-owned files, external resources, or shared-table rows that reversible migrations do not cover.
 
 ## Releases
 
-Every stable release uses an exact, unprefixed SemVer tag matching `module.json` (for example, `1.0.0`). The tag workflow calls the versioned InvoiceShelf module SDK workflow, verifies the source, builds a deterministic ZIP, signs its release manifest in the protected `module-release` environment, and uploads it to the InvoiceShelf marketplace ingest API.
-
-The repository environment supplies the signing key and the module-scoped ingest credential. They are never stored in this repository.
+The manifest version is currently `1.1.0`. Release tags must be exact, unprefixed SemVer matching that version, such as `1.1.0`; the tag workflow uses the SDK `3.2.0` release workflow to validate, package, sign, and register the module with the InvoiceShelf marketplace.
