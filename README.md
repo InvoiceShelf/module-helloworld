@@ -1,43 +1,38 @@
 # InvoiceShelf Hello World module
 
-A deliberately small, official lifecycle sample for the InvoiceShelf v3 marketplace. It is a reference for the **Module API 1.1** contract—not a template for the newer 1.2 AI-driver and typed frontend-extension APIs.
+The official reference module for InvoiceShelf 3: the smallest complete module, meant to be read and copied.
 
-It demonstrates a module page, sidebar entry, per-company settings, committed frontend assets, signed marketplace packaging, enable/disable behavior, and data-aware uninstall. The source and compiled asset are licensed `AGPL-3.0-only`.
+It shows a page registered with `registerPage`, a sidebar entry, a per-company settings form, committed frontend assets, a data cleanup hook for uninstall, and the signed marketplace release workflow. Source and compiled assets are licensed `AGPL-3.0-only`.
 
-## Exact compatibility
+## Compatibility
 
-The checked-in `module.json` declares:
-
-| Dependency | Constraint |
+| Dependency | Constraint in `module.json` |
 | --- | --- |
-| InvoiceShelf | `^3.0.0` |
-| Module API | `^1.1.0` |
-| PHP | `^8.3.0` |
-| Required extension | `ext-json` |
+| InvoiceShelf | `>=3.0.0-alpha.3 <4.0.0` |
+| Module API | `^1.3.0` |
+| PHP | `^8.4.0` |
+| Extensions | `ext-json` |
 
-`^3.0.0` begins with the final 3.0.0 release, so this sample does not declare compatibility with InvoiceShelf prereleases such as `3.0.0-alpha.*`. Do not copy that constraint for a module intended for the current v3 preview; use an explicit prerelease range after testing it instead.
+The InvoiceShelf range names the alpha it starts at on purpose: a caret range such as `^3.0.0` excludes every `3.0.0-alpha.*` prerelease.
 
-## Development
+## Local development
 
-Requirements: PHP 8.3 or newer, Composer, Node.js 22, and pnpm 11.
+You need PHP 8.4, Composer, Node 24 and pnpm 11, and an InvoiceShelf 3.x checkout to run the module in.
 
-```bash
-composer install
-pnpm install --frozen-lockfile
-composer run lint
-composer run test
-pnpm run build
-vendor/bin/invoiceshelf-module validate-package .
-```
+1. **Put the module where the host looks for modules.** Clone it into the host's `Modules/HelloWorld` (the folder name is the module's `name` in `module.json`). In the InvoiceShelf devenv, keep `module-helloworld` as a sibling checkout and symlink it instead: `ln -s ../../module-helloworld InvoiceShelf/Modules/HelloWorld`, plus a bind mount of the sibling directory into the PHP container so the link resolves there too.
+2. **Install the module's own tools.** In the module directory: `composer install` (the SDK, PHPUnit, Pint) and `pnpm install`.
+3. **Build the frontend.** `pnpm run build` writes `dist/init.js`. There is no hot reload: rebuild after every change under `resources/js/` and reload the page.
+4. **Install it into the host.** From the host: `php artisan install:module HelloWorld 1.2.0`. That runs the module's migrations, enables it and fires the lifecycle events, as a marketplace install would.
+5. **Open it.** Sign in and use the Hello World entry in the sidebar (`/admin/modules/hello-world/dashboard`).
 
-`dist/init.js` is committed because InvoiceShelf installs immutable module packages without running Composer or Node package managers. Rebuild and commit it whenever the Vue source changes.
+The module's tests run without a host, on Orchestra Testbench: `composer run test`.
 
 ## Lifecycle and data removal
 
-Disabling the module removes its active UI and routes while keeping its configuration. Uninstalling removes the package. When an administrator explicitly selects **Remove module data**, InvoiceShelf calls the module's `DataCleanup` hook first, runs every module migration's `down()` method, then removes host-managed settings.
+Disabling the module removes its page and sidebar entry and keeps its settings. Uninstalling removes the package. When an administrator ticks **Remove module data**, InvoiceShelf calls the module's `DataCleanup` hook first, runs every migration's `down()`, then removes the settings the host stored.
 
-Hello World does not create persistent module data, so its cleanup implementation is intentionally empty. It is still a useful reference: cleanup must be safe to retry and should remove module-owned files, external resources, or shared-table rows that reversible migrations do not cover.
+Hello World stores nothing of its own, so its cleanup is intentionally empty. A real cleanup must be safe to run twice and remove what reversible migrations do not cover: files, external resources, rows in shared tables.
 
 ## Releases
 
-The manifest version is currently `1.1.0`. Release tags must be exact, unprefixed SemVer matching that version, such as `1.1.0`; the tag workflow uses the SDK `3.2.0` release workflow to validate, package, sign, and register the module with the InvoiceShelf marketplace.
+Releases are cut by pushing a tag equal to `module.json`'s `version` (unprefixed, such as `1.2.0`). The tag workflow uses the SDK's reusable workflow (`module-release.yml@3.4.0`) to validate, package, sign and register the release with the InvoiceShelf marketplace. See [CONTRIBUTING.md](CONTRIBUTING.md) for the checks to run first.
