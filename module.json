@@ -1,7 +1,7 @@
 {
     "name": "HelloWorld",
     "alias": "helloworld",
-    "description": "The official InvoiceShelf reference module and marketplace installation sample.",
+    "description": "The official InvoiceShelf reference module: a page, settings, record extension slots and a bundled third-party package.",
     "keywords": [
         "example",
         "reference"
@@ -15,14 +15,15 @@
     "requires": {},
     "schema_version": 2,
     "slug": "hello-world",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "license": "AGPL-3.0-only",
     "compatibility": {
-        "invoiceshelf": ">=3.0.0-alpha.3 <4.0.0",
-        "module_api": "^1.3.0",
+        "invoiceshelf": ">=3.0.0-alpha.12 <4.0.0",
+        "module_api": "^1.4.0",
         "php": "^8.4.0",
         "extensions": [
-            "ext-json"
+            "ext-json",
+            "ext-mbstring"
         ]
     },
     "module_dependencies": {},
@@ -30,7 +31,7 @@
     "uninstall": {
         "data_cleanup": "Modules\\HelloWorld\\Lifecycle\\DataCleanup"
     },
-    "dependency_policy": "host-provided-only",
+    "dependency_policy": "bundled",
     "assets": [
         "dist/init.js"
     ]
