@@ -28,15 +28,8 @@ jobs:
           node-version: 24
           cache: pnpm
 
-      # TEMPORARY until invoiceshelf/modules 3.5.0 is tagged: install the SDK's
-      # integration/3.5 preview branch, then restore composer.json so the package
-      # checks below still see the real ^3.5 requirement. Replace this step with
-      # `composer install --no-interaction --prefer-dist` once the tag exists.
-      - name: Install PHP dependencies (SDK 3.5 preview)
-        run: |
-          composer require --no-interaction --no-update 'invoiceshelf/modules:dev-integration/3.5 as 3.5.0'
-          composer update --no-interaction --prefer-dist
-          git checkout -- composer.json
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist
 
       - name: Build the bundle from bundle.lock
         # Against the host's 3.x branch: a bundle that no longer fits the next
