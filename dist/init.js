@@ -1,9 +1,9 @@
 const { Fragment: e, computed: t, createBlock: n, createCommentVNode: r, createElementBlock: i, createElementVNode: a, createTextVNode: o, createVNode: s, defineComponent: c, h: l, normalizeClass: u, onMounted: d, openBlock: f, ref: p, renderList: m, resolveComponent: h, toDisplayString: g, unref: _, withCtx: v } = window.__invoiceshelf_vue;
 //#region resources/js/pages/DashboardPage.vue?vue&type=script&setup=true&lang.ts
-var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }, x = { class: "flex items-center gap-4" }, S = { class: "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50" }, C = { class: "mt-6 flex flex-wrap gap-3" }, w = { class: "rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body" }, T = { class: "flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8" }, E = { class: "flex h-40 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-black/5" }, D = ["src"], O = {
+var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }, x = { class: "flex items-center gap-4" }, S = { class: "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50" }, C = { class: "mt-6 flex flex-wrap gap-3" }, w = { class: "rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body" }, T = { class: "p-6 sm:p-8" }, E = { class: "mt-4 space-y-3 text-sm text-muted" }, D = { class: "flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8" }, O = { class: "flex h-40 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-black/5" }, k = ["src"], A = {
 	key: 0,
 	class: "mt-2 break-all text-xs text-subtle"
-}, k = { class: "p-6 sm:p-8" }, A = { class: "mt-4 space-y-3 text-sm text-muted" }, j = "Hello from an official InvoiceShelf module!", M = /* @__PURE__ */ c({
+}, j = "Hello from an official InvoiceShelf module!", M = /* @__PURE__ */ c({
 	__name: "DashboardPage",
 	props: { client: { type: [Function, Object] } },
 	setup(t) {
@@ -57,35 +57,8 @@ var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }
 						])]),
 						_: 1
 					}),
-					s(I, { class: "lg:col-span-2" }, {
-						default: v(() => [a("div", T, [a("div", E, [l.value ? (f(), i("img", {
-							key: 0,
-							src: l.value.data_uri,
-							alt: "QR code that opens Hello World",
-							class: "h-full w-full"
-						}, null, 8, D)) : u.value ? (f(), n(F, {
-							key: 2,
-							name: "ExclamationTriangleIcon",
-							class: "h-6 w-6 text-subtle"
-						})) : (f(), n(L, {
-							key: 1,
-							class: "h-6 w-6 text-subtle"
-						}))]), a("div", null, [
-							c[5] ||= a("p", { class: "text-sm font-medium text-primary-600" }, "Rendered by a bundled package", -1),
-							c[6] ||= a("h3", { class: "mt-1 text-lg font-semibold text-heading" }, "Scan to open Hello World on your phone", -1),
-							c[7] ||= a("p", { class: "mt-2 max-w-xl text-sm leading-6 text-muted" }, [
-								o(" The server draws this code with "),
-								a("code", null, "chillerlan/php-qrcode"),
-								o(", a library InvoiceShelf does not ship. The module carries it in its "),
-								a("code", null, "bundle/"),
-								o(" folder, built at release against the host's own packages and checked by the host when the module is installed. ")
-							], -1),
-							l.value ? (f(), i("p", O, g(l.value.target), 1)) : r("", !0)
-						])])]),
-						_: 1
-					}),
 					s(I, null, {
-						default: v(() => [a("div", k, [c[8] ||= a("h3", { class: "text-base font-semibold text-heading" }, "What this verifies", -1), a("ul", A, [(f(), i(e, null, m(N, (e) => a("li", {
+						default: v(() => [a("div", T, [c[5] ||= a("h3", { class: "text-base font-semibold text-heading" }, "What this verifies", -1), a("ul", E, [(f(), i(e, null, m(N, (e) => a("li", {
 							key: e,
 							class: "flex items-start gap-2"
 						}, [s(F, {
@@ -93,36 +66,60 @@ var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }
 							class: "mt-0.5 h-4 w-4 shrink-0 text-green-500"
 						}), a("span", null, g(e), 1)])), 64))])])]),
 						_: 1
+					}),
+					s(I, { class: "lg:col-span-3" }, {
+						default: v(() => [a("div", D, [a("div", O, [l.value ? (f(), i("img", {
+							key: 0,
+							src: l.value.data_uri,
+							alt: "QR code that opens Hello World",
+							class: "h-full w-full"
+						}, null, 8, k)) : u.value ? (f(), n(F, {
+							key: 2,
+							name: "ExclamationTriangleIcon",
+							class: "h-6 w-6 text-subtle"
+						})) : (f(), n(L, {
+							key: 1,
+							class: "h-6 w-6 text-subtle"
+						}))]), a("div", null, [
+							c[6] ||= a("p", { class: "text-sm font-medium text-primary-600" }, "Rendered by a bundled package", -1),
+							c[7] ||= a("h3", { class: "mt-1 text-lg font-semibold text-heading" }, "Scan to open Hello World on your phone", -1),
+							c[8] ||= a("p", { class: "mt-2 max-w-xl text-sm leading-6 text-muted" }, [
+								o(" The server draws this code with "),
+								a("code", null, "chillerlan/php-qrcode"),
+								o(", a library InvoiceShelf does not ship. The module carries it in its "),
+								a("code", null, "bundle/"),
+								o(" folder, built at release against the host's own packages and checked by the host when the module is installed. ")
+							], -1),
+							l.value ? (f(), i("p", A, g(l.value.target), 1)) : r("", !0)
+						])])]),
+						_: 1
 					})
 				])]),
 				_: 1
 			});
 		};
 	}
-}), N = { class: "flex items-center gap-3 p-4" }, P = { class: "text-sm text-body" }, F = { class: "text-heading" }, I = {
-	key: 0,
-	class: "text-muted"
-}, L = /* @__PURE__ */ c({
+}), N = { class: "text-sm text-body" }, P = { class: "text-heading" }, F = /* @__PURE__ */ c({
 	__name: "RecordGreetingPanel",
 	props: { context: {} },
 	setup(e) {
-		let c = e, l = t(() => c.context.record()), u = t(() => c.context.entity.replace("-", " "));
+		let r = e, i = t(() => r.context.record()), c = t(() => r.context.entity.replace("-", " "));
 		return (e, t) => {
-			let c = h("BaseIcon"), d = h("BaseCard");
-			return f(), n(d, null, {
-				default: v(() => [a("div", N, [s(c, {
+			let r = h("BaseIcon"), l = h("BaseCard");
+			return f(), n(l, { "container-class": "flex items-center gap-3 px-4 py-3" }, {
+				default: v(() => [s(r, {
 					name: "HandRaisedIcon",
 					class: "h-5 w-5 shrink-0 text-primary-500"
-				}), a("p", P, [
-					o(" Hello World sees this " + g(u.value) + ": ", 1),
-					a("strong", F, g(l.value?.number ?? `#${l.value?.id}`), 1),
-					l.value?.status ? (f(), i("span", I, "(" + g(l.value.status) + ")", 1)) : r("", !0)
-				])])]),
+				}), a("p", N, [
+					o(" Hello World sees this " + g(c.value) + ": ", 1),
+					a("strong", P, g(i.value?.number ?? `#${i.value?.id}`), 1),
+					o(g(i.value?.status ? ` (${i.value.status})` : ""), 1)
+				])]),
 				_: 1
 			});
 		};
 	}
-}), R = /* @__PURE__ */ c({
+}), I = /* @__PURE__ */ c({
 	__name: "SayHelloButton",
 	props: {
 		context: {},
@@ -149,7 +146,7 @@ var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }
 			});
 		};
 	}
-}), z = /* @__PURE__ */ c({
+}), L = /* @__PURE__ */ c({
 	__name: "SayHelloMenuItem",
 	props: {
 		context: {},
@@ -172,38 +169,38 @@ var y = { class: "mt-6 grid gap-6 lg:grid-cols-3" }, b = { class: "p-6 sm:p-8" }
 			});
 		};
 	}
-}), B = "hello-world", V = `/admin/modules/${B}/dashboard`;
+}), R = "hello-world", z = `/admin/modules/${R}/dashboard`;
 window.InvoiceShelf.booting((e, t, n) => {
 	n.addMessages({ en: { hello_world: {
 		open: "Hello World",
 		say_hello: "Say hello"
 	} } }), n.registerPage({
 		id: "dashboard",
-		module: B,
+		module: R,
 		path: "dashboard",
-		component: H(n, M),
+		component: B(n, M),
 		meta: { title: "Hello World" }
 	});
 	for (let e of ["invoice", "customer"]) n.registerEntityPanel(e, {
-		id: `${B}.greeting`,
-		component: L
+		id: `${R}.greeting`,
+		component: F
 	}), n.registerEntityAction(e, "list", {
-		id: `${B}.say-hello`,
-		component: z,
+		id: `${R}.say-hello`,
+		component: L,
 		props: { notify: n.notify.bind(n) }
 	});
 	n.registerEntityAction("invoice", "detail", {
-		id: `${B}.say-hello`,
-		component: R,
+		id: `${R}.say-hello`,
+		component: I,
 		props: { notify: n.notify.bind(n) }
 	}), n.registerCreateAction({
-		id: `${B}.open`,
+		id: `${R}.open`,
 		label: "hello_world.open",
 		icon: "HandRaisedIcon",
-		to: V
+		to: z
 	});
 });
-function H(e, t) {
+function B(e, t) {
 	return c({ setup: (n, { attrs: r }) => () => l(t, {
 		...r,
 		client: e.client

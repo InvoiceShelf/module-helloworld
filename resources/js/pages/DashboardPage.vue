@@ -45,7 +45,19 @@
         </div>
       </BaseCard>
 
-      <BaseCard class="lg:col-span-2">
+      <BaseCard>
+        <div class="p-6 sm:p-8">
+          <h3 class="text-base font-semibold text-heading">What this verifies</h3>
+          <ul class="mt-4 space-y-3 text-sm text-muted">
+            <li v-for="item in checks" :key="item" class="flex items-start gap-2">
+              <BaseIcon name="CheckCircleIcon" class="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+              <span>{{ item }}</span>
+            </li>
+          </ul>
+        </div>
+      </BaseCard>
+
+      <BaseCard class="lg:col-span-3">
         <div class="flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8">
           <div class="flex h-40 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-black/5">
             <img v-if="qr" :src="qr.data_uri" alt="QR code that opens Hello World" class="h-full w-full">
@@ -62,18 +74,6 @@
             </p>
             <p v-if="qr" class="mt-2 break-all text-xs text-subtle">{{ qr.target }}</p>
           </div>
-        </div>
-      </BaseCard>
-
-      <BaseCard>
-        <div class="p-6 sm:p-8">
-          <h3 class="text-base font-semibold text-heading">What this verifies</h3>
-          <ul class="mt-4 space-y-3 text-sm text-muted">
-            <li v-for="item in checks" :key="item" class="flex items-start gap-2">
-              <BaseIcon name="CheckCircleIcon" class="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
-              <span>{{ item }}</span>
-            </li>
-          </ul>
         </div>
       </BaseCard>
     </div>

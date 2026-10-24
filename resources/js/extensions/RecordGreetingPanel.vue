@@ -1,12 +1,9 @@
 <template>
-  <BaseCard>
-    <div class="flex items-center gap-3 p-4">
-      <BaseIcon name="HandRaisedIcon" class="h-5 w-5 shrink-0 text-primary-500" />
-      <p class="text-sm text-body">
-        Hello World sees this {{ label }}: <strong class="text-heading">{{ record?.number ?? `#${record?.id}` }}</strong>
-        <span v-if="record?.status" class="text-muted">({{ record.status }})</span>
-      </p>
-    </div>
+  <BaseCard container-class="flex items-center gap-3 px-4 py-3">
+    <BaseIcon name="HandRaisedIcon" class="h-5 w-5 shrink-0 text-primary-500" />
+    <p class="text-sm text-body">
+      Hello World sees this {{ label }}: <strong class="text-heading">{{ record?.number ?? `#${record?.id}` }}</strong>{{ record?.status ? ` (${record.status})` : '' }}
+    </p>
   </BaseCard>
 </template>
 
