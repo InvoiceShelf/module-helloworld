@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   release:
-    uses: InvoiceShelf/modules/.github/workflows/module-release.yml@3.2.0
+    uses: InvoiceShelf/modules/.github/workflows/module-release.yml@3.4.0
     with:
       channel: stable
     secrets: inherit

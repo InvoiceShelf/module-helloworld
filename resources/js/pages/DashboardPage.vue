@@ -36,7 +36,7 @@
               Version {{ moduleVersion }}
             </span>
             <span class="rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body">
-              Module API 1
+              Module API 1.3
             </span>
             <span class="rounded-full bg-surface-secondary px-3 py-1 text-xs font-medium text-body">
               Signed package
@@ -61,14 +61,12 @@
 </template>
 
 <script setup lang="ts">
-declare const __MODULE_VERSION__: string
-
 const moduleVersion = __MODULE_VERSION__
 const greeting = 'Hello from an official InvoiceShelf module!'
 const checks = [
-  'The module route is registered before the app mounts.',
+  'The page is registered with registerPage before the app mounts.',
   'The sidebar contribution comes from the module registry.',
   'Settings are rendered and stored by the host per company.',
-  'Version 1.0.1 was delivered as a signed, immutable update.',
+  `Version ${moduleVersion} was delivered as a signed, immutable update.`,
 ]
 </script>
