@@ -19,5 +19,6 @@ class HelloWorldServiceProvider extends ModuleServiceProvider
         parent::boot();
 
         ModuleRegistration::register(module_path($this->name));
+        $this->loadRoutesFrom(module_path($this->name, 'routes/api.php'));
     }
 }

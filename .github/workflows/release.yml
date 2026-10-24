@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   release:
-    uses: InvoiceShelf/modules/.github/workflows/module-release.yml@3.4.0
+    uses: InvoiceShelf/modules/.github/workflows/module-release.yml@3.5.0
     with:
       channel: stable
+      # The oldest InvoiceShelf release this version supports; the bundle is built against its composer.lock.
+      host-version: 3.0.0-alpha.12
     secrets: inherit

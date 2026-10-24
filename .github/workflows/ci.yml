@@ -31,6 +31,15 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist
 
+      - name: Build the bundle from bundle.lock
+        # Against the host's 3.x branch: a bundle that no longer fits the next
+        # host release fails here before it fails a release.
+        run: |
+          curl --fail --silent --show-error --location \
+            https://raw.githubusercontent.com/InvoiceShelf/InvoiceShelf/3.x/composer.lock \
+            --output "$RUNNER_TEMP/host-composer.lock"
+          vendor/bin/invoiceshelf-module bundle . --host-lock="$RUNNER_TEMP/host-composer.lock"
+
       - name: Verify PHP and package contracts
         run: |
           composer run lint

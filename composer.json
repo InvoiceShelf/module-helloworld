@@ -11,7 +11,9 @@
     "require": {
         "php": "^8.4",
         "ext-json": "*",
-        "invoiceshelf/modules": "^3.4"
+        "ext-mbstring": "*",
+        "chillerlan/php-qrcode": "^6.0",
+        "invoiceshelf/modules": "^3.5"
     },
     "require-dev": {
         "laravel/pint": "^1.26",
@@ -35,6 +37,9 @@
     "config": {
         "allow-plugins": {
             "wikimedia/composer-merge-plugin": false
+        },
+        "platform": {
+            "php": "8.4.0"
         },
         "sort-packages": true
     },
